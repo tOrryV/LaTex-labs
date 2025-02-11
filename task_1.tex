@@ -1,0 +1,120 @@
+\documentclass[]{article} 
+\usepackage[fontsize=14pt]{fontsize} 
+\usepackage{fontspec}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+
+\usepackage[% 
+ a4paper,% 
+ footskip=1cm,% 
+ headsep=0.3cm,% 
+ top=2cm, %поле сверху 
+ bottom=2cm, %поле снизу 
+ left=2cm, %поле ліворуч 
+ right=2cm, %поле праворуч 
+    ]{geometry} 
+ 
+\usepackage{microtype} 
+\usepackage{amsthm}
+\usepackage{logix} 
+ 
+\usepackage[english, ukrainian]{babel} 
+\usepackage{indentfirst} 
+\theoremstyle{plain} 
+\newtheorem{lemma}{Лема}
+\setlength{\jot}{3pt} 
+
+\title{\sffamily Рівневий набір гармонійних функцій} 
+\author{А. В. Тор} 
+\date{}
+ 
+\renewcommand{\baselinestretch}{1.5} 
+\begin{document} 
+\maketitle
+Для $\theta \in [0, \pi/2[$, розглянемо множини
+\begin{align*}
+    \Sigma_{1,\theta} &= \biggl\{ a \in \mathbb{C} \setminus ]{-\infty}, -1] : \Re \biggl( \int_{[1,a]} e^{i\theta} \sqrt{p_a(z)} \; dz \biggr) = 0 \biggr\}; \\
+    \Sigma_{-1,\theta} &= \biggl\{ a \in \mathbb{C} \setminus [1, +\infty[ : \Re \biggl( \int_{[-1,a]} e^{i\theta} \sqrt{p_a(z)} \; dz \biggr) = 0 \biggr\}; \\
+    \Sigma_{\theta} &= \biggl\{ a \in \mathbb{C} \setminus [-1, 1] : \Re \biggl( \int_{[-1,1]} e^{i\theta} \sqrt{p_a(z)} \; dz \biggr) = 0 \biggr\};
+\end{align*}
+де $p_a(z)$ \textemdash\ комплексний многочлен, визначений формулою
+\[ p_a(z) = (z - a)(z^2 - 1). \]
+
+\begin{lemma}
+Нехай $\theta \in [0, \pi/2[$. Тоді кожна з множин $\Sigma_{1,\theta}$ та $\Sigma_{-1,\theta}$ утворюється двома гладкими кривими, які локально ортогональні відповідно при $z = 1$ та $z = -1$, точніше:
+\begin{align*}
+    \lim_{a \to -1, \, a \in \Sigma_{-1,\theta}} \arg(a + 1) =\frac{-2\theta + (2k + 1) \pi}{4}, \quad k = 0, 1, 2, 3; \\ 
+    \lim_{a \to +1, \, a \in \Sigma_{1,\theta}} \arg(a - 1) = \frac{-\theta + k\pi}{2}, \quad k = 0, 1, 2, 3.
+\end{align*}
+
+Дві криві, що визначають $\Sigma_{1,\theta}$ (відповідно $\Sigma_{-1,\theta}$), перетинаються лише при $z = 1$ (відповідно $z = -1$). Більше того, для $\theta \notin \{0, \pi/2\}$, вони розходяться по-різному до $\infty$ в одному з напрямків
+\begin{equation*}
+    \lim_{|a| \to +\infty, \, a \in \Sigma_{\pm 1, \theta}} \arg a = \frac{-2\theta + 2k\pi}{5}, \quad k = 0, 1, 2, 3, 4.
+\end{equation*}
+Для $\theta = 0$, (відповідно $\theta = \pi/2$), один промінь $\Sigma_{1,\theta}$ (відповідно $\Sigma_{-1,\theta}$) розходиться до $z = -1$ (відповідно $z = 1$).
+\end{lemma}
+\begin{proof}
+Нехай задано непостійну гармонічну функцію $u$, визначену в деякій області $\mathcal{D}$ of $\mathbb{C}$. Критичними точками $u$ є саме ті, де
+\begin{equation*}
+    \frac{\partial u}{\partial z} = \frac{1}{2} \left( \frac{\partial u}{\partial x} - i \frac{\partial u}{\partial y} \right) = 0.
+\end{equation*}
+Вони ізольовані. Якщо $v$ є гармонічним спряженням $u$ у $\mathcal{D}$, скажімо, $f(z) = u(z) + iv(z)$ аналітична у $\mathcal{D}$, тоді за Коші-Ріманом,
+\[ f'(z) = 0 \iff u'(z) = 0. \]
+Встановлений рівень
+\[ \Sigma_{z_0} = \{ z \in \mathcal{D} : u(z) = u(z_0) \} \]
+$u$ через точку $z_0 \in \mathcal{D}$ залежить від поведінки $f$ поблизу $z_0$. Точніше, якщо $z_0$ є критичною точкою $u$, ($u'(z_0) = 0$), то існує околиця $\mathcal{U}$ околу $z_0$, голоморфної функції $g(z)$, визначена на $\mathcal{U}$, така, що
+\[ \forall z \in \mathcal{U}, \quad f(z) = (z - z_0)^m g(z), \quad g(z) \neq 0. \]
+Взявши гілку $m$-го кореня з $g(z)$, $f$ має локальну структуру
+\[ f(z) = (h(z))^m, \quad \forall z \in U. \]
+Звідси випливає, що $\Sigma_{z_0}$ локально утворена $m$ аналітичними дугами які проходять через $z_0$ і перетинаються там під рівними кутами $\pi/m$. Через регулярну точку $z_0 \in \mathcal{D}$, ($u'(z_0) \neq 0$), теорема про неявну функцію стверджує, що $\Sigma_{z_0}$ є локально єдиною аналітичною дугою. Зауважте, що множина рівнів гармонічної функції не може закінчуватися у звичайній точці.
+
+Розглянемо багатозначну функцію
+\[ f_{1,\theta}(a) = \int_{1}^{a} e^{i\theta} \sqrt{p_a(t)} \; dt, \quad a \in \mathbb{C}. \]
+Інтегруючи вздовж відрізка $[1, a]$, можна припустити, що без без втрати загальності, що
+\begin{equation}\label{eq:formula1}
+    f_{1,\theta}(a) = i e^{i\theta} (a - 1)^2 
+\int_{0}^{1} \sqrt{t(1 - t)} \sqrt{t(a - 1) + 2} \; dt = (a - 1)^2 g(a), \quad g(1) \neq 0.
+\end{equation}
+Очевидно, що:
+\[ \forall a \in \mathbb{C} \setminus ]{-\infty}, -1], \quad \{ t(a - 1) + 2 : t \in [0, 1] \} = [2, a + 1] \subset \mathbb{C} \setminus ]{-\infty}, 0]. \]
+Отже, при фіксованому виборі аргументу та квадратного кореня всередині інтеграла, $f_{1,\theta}$ та $g$ є однозначними аналітичними функціями в $\mathbb{C} \setminus ]{-\infty}, -1]$.
+
+Припустимо, що для деяких $a \in \mathbb{C} \setminus ]{-\infty}, -1]$, $a \neq -1$,
+\[ u(a) = \Re f_{1,\theta}(a) = 0, \quad f'_{1,\theta}(a) = 0. \]
+Тоді,
+\[ (a - 1)^3 g'(a) + 2f_{1,\theta}(a) = 0. \]
+Беручи справжні деталі, ми отримуємо
+\[ 0 = \int_{0}^{1} \sqrt{t(1 - t)} 
+\Im \left( e^{i\theta} (a - 1)^2 \sqrt{t(a - 1) + 2} \right) dt, \]
+\[ 0 = \Re \left( (a - 1)^3 g'(a) \right) = \int_{0}^{1} t \sqrt{t(1 - t)} 
+\Im \left( e^{i\theta} (a - 1)^3 \sqrt{t(a - 1) + 2} \right) dt. \]
+
+За неперервністю функцій всередині цих інтегралів на відрізку $[0, 1]$, існують $t_1, t_2 \in [0, 1]$ такі, що
+\[ \Im \left( e^{i\theta} (a - 1)^2 \sqrt{t_1(a - 1) + 2} \right) = \Im \left( e^{i\theta} (a - 1)^3 \sqrt{t_2(a - 1) + 2} \right) = 0, \]
+а потім
+\[ e^{2i\theta} (a - 1)^4 (t_1(a - 1) + 2) > 0, \quad e^{2i\theta} (a - 1)^6 (t_2(a - 1) + 2) > 0. \]
+Взявши їх співвідношення, отримуємо
+\[ \frac{(t_1(a - 1) + 2)(t_2(a - 1) + 2)}{(a - 1)^2} > 0, \]
+яка не може виконуватись, оскільки, якщо $\Im a > 0$, то
+\[ 0 < \arg(t_1(a - 1) + 2) + \arg(t_2(a - 1) + 2) < 2 \arg(a + 1) < \arg((a - 1)^2) < 2\pi. \]
+Випадок $\Im a < 0$ є аналогічним, тоді як випадок $a \in \mathbb{R}$ можна легко відкинути. Таким чином, $a = 1$ є єдиною критичною точкою $\Re f_{1,\theta}$. Since $f''_{1,\theta}(1) = 2g(1) \neq 0$, ми виводимо локальну поведінку $\Sigma_{1,\theta}$ поблизу $a = 1$.
+
+Припустимо, що для деяких $\theta \in ]0, \pi/2[$, промінь $\Sigma_{\pm 1,\theta}$ розходиться до певного моменту в $]{-\infty}, -1[$; або наприклад,
+\[ (\Sigma_{1,\theta} \setminus \Sigma_{1,\theta}) \cap \{ z \in \mathbb{C} : \Im z \geq 0 \} = \{x_{\theta}\}. \]
+Нехай $\epsilon > 0$ так, що $0 < \theta - 2\epsilon$. Для $a \in \mathbb{C}$, що задовольняє $\pi - \epsilon < \arg a < \pi$,
+\[ 0 < \theta - 2\epsilon < \theta + 2 \arg a + \arg \int_{0}^{1} \sqrt{t(1 - t)} \sqrt{t(a - 1) + 2} dt < \frac{\pi}{2} + \theta - \frac{\epsilon}{2} < \pi, \]
+що суперечить \eqref{eq:formula1}. Інші випадки подібні. Таким чином, будь-який промінь з $\Sigma_{\pm 1,\theta}$ повинен розходитись на $\infty$. Випадок $\theta = 0$ є простішим.
+
+Якщо $a \to \infty$, тоді $|f_{1,\theta}(a)| \to +\infty$; since $\Re f_{1,\theta}(a) = 0$, we have $|\Im f_{1,\theta}(a)| \to +\infty$. Звідси випливає, що
+\[ \arg(f(a)) \sim \arg \left( \frac{4}{15} e^{i\theta} a^{5/2} \right) \to \frac{\pi}{2} + k\pi, \quad k \in \mathbb{Z}, \quad \text{при } a \to \infty. \]
+Ми отримуємо поведінку будь-якої дуги $\Sigma_{1,\theta}$, яка розходиться до $\infty$. Зокрема, з принципу максимуму модуля, два промені з $\Sigma_{,\theta}$ не можуть розходитись у $\infty$. $\Sigma_{,\theta}$ не можуть розходитися до $\infty$ в одному напрямку. 
+
+Якщо $\Sigma_{1,\theta}$ містить регулярну точку $z_0$ (наприклад, $\Im z_0 > 0$), яка не належить дугам $\Sigma_{1,\theta}$, що виходять з точки $a = 1$. Два промені кривої набору рівнів $\gamma$, що проходять через $z_0$ розходяться до $\infty$ у двох різних напрямках. Звідси випливає, що $\gamma$ має проходити через $z_1 = 1 + iy$, для деяких $y > 0$, або $z_1 = y$, для деяких $y > 1$. Легко перевірити, що в обох випадках, для будь-якого вибору аргументу,
+\[ \Re \int_{1}^{z_1} e^{i\theta} \sqrt{p_{z_1}(t)} dt \neq 0, \]
+і отримуємо протиріччя. Таким чином, $\Sigma_{1,\theta}$ утворюється лише двома двома кривими. Що проходять через $a = 1$. Таку ж саму ідею дає структура  $\Sigma_{-1,\theta}$; навіть більше, з співвідношення
+\begin{equation} \label{eq: formula2}
+    \Re f_{\pm 1,\theta}(a) = 0 \iff \Re f_{\pm 1, \pi/2 - \theta}(-a) = 0,
+\end{equation}
+доступних для довільного $\theta \in [\pi/4, \pi/2 [,$ можна легко побачити, що $\Sigma_{-1, \pi/2 - \theta}$ і $\Sigma_{1, \theta}$ симетричні відносно уявної осі \eqref{eq: formula2}. Це приводить нас до того, щоб обмежити наше дослідження випадком.
+\end{proof}
+\end{document}
